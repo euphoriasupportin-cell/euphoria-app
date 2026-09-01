@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Euphoria - Earn Money Daily</title>
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
@@ -80,6 +82,8 @@
                         0 0 15px rgba(0, 210, 255, 0.4);
             border: 3px solid rgba(255, 255, 255, 0.25);
             animation: pulse 3s infinite ease-in-out;
+            display: block;
+            margin: 0 auto;
         }
 
         @keyframes pulse {
@@ -262,8 +266,9 @@
     <div class="bg-glow-2"></div>
 
     <div class="container">
+        <!-- Logo Header (Django static tag ব্যবহার করা হয়েছে) -->
         <div class="logo-wrapper">
-            <img src="/media/images/logo.jpeg" alt="Euphoria Logo" class="app-logo" onerror="this.onerror=null; this.src='/static/images/logo.jpeg';">
+            <img src="{% static 'images/logo.jpeg' %}" alt="Euphoria Logo" class="app-logo" onerror="this.onerror=null; this.src='/media/images/logo.jpeg';">
         </div>
         
         <h1 class="logo-title">EUPHORIA</h1>
@@ -276,10 +281,66 @@
             Play games, spin the wheel, complete tasks & withdraw cash instantly to your wallet!
         </p>
 
+        <!-- Download APK Button -->
         <a href="{% url 'download_apk' %}" class="download-btn">
             <i class="fa-brands fa-android"></i>
             <span>Download App Now</span>
         </a>
 
+        <!-- Feature Cards Grid -->
         <div class="features-grid">
             <div class="feature-card">
+                <i class="fa-solid fa-dharmachakra"></i>
+                <h4>Spin & Earn</h4>
+                <p>Free spins daily</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-bolt"></i>
+                <h4>Instant Cashout</h4>
+                <p>Fast payouts</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-users"></i>
+                <h4>Referral Bonus</h4>
+                <p>Earn by inviting</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-gift"></i>
+                <h4>Daily Rewards</h4>
+                <p>Free login bonus</p>
+            </div>
+        </div>
+
+        <!-- Specifications -->
+        <div class="spec-card">
+            <div class="spec-row">
+                <span class="spec-label"><i class="fa-solid fa-mobile-screen"></i> App Name</span>
+                <span class="spec-value">Euphoria App</span>
+            </div>
+            <div class="spec-row">
+                <span class="spec-label"><i class="fa-solid fa-code-version"></i> Version</span>
+                <span class="spec-value">v1.0.0</span>
+            </div>
+            <div class="spec-row">
+                <span class="spec-label"><i class="fa-solid fa-hard-drive"></i> Size</span>
+                <span class="spec-value">15.2 MB</span>
+            </div>
+            <div class="spec-row">
+                <span class="spec-label"><i class="fa-solid fa-shield-halved"></i> Safety</span>
+                <span class="spec-value" style="color: #10b981;">100% Safe</span>
+            </div>
+        </div>
+
+        <!-- Security Badge -->
+        <div class="security-badge">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Verified & Secured APK</span>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Euphoria App. All rights reserved.
+    </footer>
+
+</body>
+</html>
