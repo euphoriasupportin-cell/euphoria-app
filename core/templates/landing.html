@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Euphoria - Earn Money Daily</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #070913;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Background Glows */
+        .bg-glow-1 {
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(155, 81, 224, 0.4) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: 0;
+            filter: blur(50px);
+            pointer-events: none;
+        }
+
+        .bg-glow-2 {
+            position: absolute;
+            bottom: 50px;
+            right: -50px;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(255, 184, 0, 0.25) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: 0;
+            filter: blur(60px);
+            pointer-events: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            padding: 24px 18px;
+            z-index: 1;
+            text-align: center;
+            margin: auto 0;
+        }
+
+        /* Circular Logo Styling */
+        .logo-wrapper {
+            margin: 5px auto 15px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .app-logo {
+            width: 110px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 50%; /* 🔴 Perfect Circle */
+            box-shadow: 0 0 25px rgba(155, 81, 224, 0.7),
+                        0 0 15px rgba(0, 210, 255, 0.4);
+            border: 3px solid rgba(255, 255, 255, 0.25);
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 0 0 25px rgba(155, 81, 224, 0.7), 0 0 15px rgba(0, 210, 255, 0.4); 
+            }
+            50% { 
+                transform: scale(1.05); 
+                box-shadow: 0 0 35px rgba(255, 184, 0, 0.8), 0 0 20px rgba(155, 81, 224, 0.6); 
+            }
+        }
+
+        .logo-title {
+            font-size: 2.3rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #00d2ff, #9b51e0, #ffb800);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .earning-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 184, 0, 0.15);
+            border: 1px solid rgba(255, 184, 0, 0.4);
+            color: #ffb800;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-top: 10px;
+            margin-bottom: 16px;
+        }
+
+        .app-tagline {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            margin-bottom: 24px;
+            line-height: 1.5;
+            font-weight: 400;
+            padding: 0 10px;
+        }
+
+        /* Mobile Optimized Download Button */
+        .download-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: #ffffff;
+            padding: 16px 20px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 800;
+            box-shadow: 0 8px 25px rgba(0, 114, 255, 0.45);
+            transition: all 0.2s ease;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            width: 100%;
+        }
+
+        .download-btn:active {
+            transform: scale(0.98);
+        }
+
+        .download-btn i {
+            font-size: 1.5rem;
+        }
+
+        /* Mobile Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .feature-card {
+            background: rgba(22, 28, 45, 0.75);
+            backdrop-filter: blur(10px);
+            border-radius: 14px;
+            padding: 14px 10px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+        }
+
+        .feature-card i {
+            font-size: 1.6rem;
+            margin-bottom: 6px;
+            background: linear-gradient(135deg, #00d2ff, #9b51e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature-card h4 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #f8fafc;
+            margin-bottom: 2px;
+        }
+
+        .feature-card p {
+            font-size: 0.7rem;
+            color: #94a3b8;
+        }
+
+        /* Mobile Specification Card */
+        .spec-card {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 16px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            margin-bottom: 20px;
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.85rem;
+        }
+
+        .spec-row:last-child {
+            border-bottom: none;
+        }
+
+        .spec-label {
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .spec-label i {
+            color: #00d2ff;
+        }
+
+        .spec-value {
+            color: #e2e8f0;
+            font-weight: 700;
+        }
+
+        /* Mobile Security Badge */
+        .security-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.78rem;
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(16, 185, 129, 0.25);
+        }
+
+        footer {
+            padding: 15px;
+            font-size: 0.72rem;
+            color: #475569;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <div class="container">
+        <!-- Logo Header -->
+        <div class="logo-wrapper">
+            <img src="/media/images/WhatsApp Image 2026-08-31 at 1.08.39 AM.jpeg" alt="Euphoria Logo" class="app-logo">
+        </div>
+        
+        <h1 class="logo-title">EUPHORIA</h1>
+        
+        <div class="earning-badge">
+            <i class="fa-solid fa-coins"></i> 100% Free Daily Earning App
+        </div>
+
+        <p class="app-tagline">
+            Play games, spin the wheel, complete tasks & withdraw cash instantly to your wallet!
+        </p>
+
+        <!-- Download APK Button -->
+        <a href="{% url 'download_apk' %}" class="download-btn">
+            <i class="fa-brands fa-android"></i>
+            <span>Download App Now</span>
+        </a>
+
+        <!-- Feature Cards Grid -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fa-solid fa-dharmachakra"></i>
+                <h4>Spin & Earn</h4>
+                <p>Free spins daily</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-bolt"></i>
+                <h4>Instant Cashout</h4>
+                <p>Fast payouts</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-users"></i>
+                <h4>Referral Bonus</h4>
+                <p>Earn by inviting</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-gift"></i>
+                <h4>Daily Rewards</h4>
+                <p>Free login bonus</p>
+            </div>
+        </div>
+
+        <!-- Specifications -->
+        <div class="spec-card">
+            <div class="spec-row">
+                <span class="spec-label"><i class="fa-solid fa-mobile-screen"></i> App Name</span>
+                <span class="spec-value">Euphoria App</span>
+            </div>
+            <div class="spec-row">
+                <span class="spec-label"><i class="fa-solid fa-code-version"></i> Version</span>
+                <span class="spec-value">v1.0.0</span>
+            </div>
+            <div class="spec-row">
+                <span class="spec-label"><i class="fa-solid fa-hard-drive"></i> Size</span>
+                <span class="spec-value">15.2 MB</span>
+            </div>
+            <div class="spec-row">
+                <span class="spec-label"><i class="fa-solid fa-shield-halved"></i> Safety</span>
+                <span class="spec-value" style="color: #10b981;">100% Safe</span>
+            </div>
+        </div>
+
+        <!-- Security Badge -->
+        <div class="security-badge">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Verified & Secured APK</span>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Euphoria App. All rights reserved.
+    </footer>
+
+</body>
+</html>
