@@ -4,6 +4,10 @@
     {
       "src": "app_download/wsgi.py",
       "use": "@vercel/python"
+    },
+    {
+      "src": "media/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
